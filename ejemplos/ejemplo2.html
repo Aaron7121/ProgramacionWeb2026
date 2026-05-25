@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>Ejemplo 2</title>
+
+    <script src="https://code.jquery.com/jquery-4.0.0.js"></script>
+    <script languaje='javascript'>
+
+        $(document).ready(function () {
+            var text = "mundo!";
+
+            $('#miBoton').click(function () {
+                if(text === "mundo!"){
+                    text = "jQuery";
+                }else{
+                    text = "mundo!";
+                }
+                $('#miSpan').html(text);
+
+                $('#root').append("<p>Nuevo parrafo </p>");
+            });
+        });
+    </script>
+</head>
+<body>
+Hola <span id = "miSpan">mundo!</span>
+<br/>
+<button id ="miBoton"> Click</button>
+
+<div id = "root" style="border: 1px solid black">
+    MY ROOT
+</div>
+</body>
+</html>
