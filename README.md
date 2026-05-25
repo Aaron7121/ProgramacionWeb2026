@@ -1,5 +1,4 @@
 # ProgrmacionWeb2026
-# Dependencias Usadas
 
 Created: 23 de mayo de 2026 10:04
 
