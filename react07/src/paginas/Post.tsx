@@ -8,10 +8,10 @@ import {
   TableCell,
   TableBody,
 } from '@mui/material';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import InfoIcon from '@mui/icons-material/Info';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 interface Post {
   id: number;
   title: string;
@@ -21,10 +21,10 @@ interface Post {
 function Post() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(false);
-  const handleClick = () => {
 
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  }
   const fetchPosts = async () => {
     try {
       setLoading(true);
@@ -41,8 +41,22 @@ function Post() {
     }
   };
 
+  // Cargar posts al montar la página
+  useEffect(() => {
+    fetchPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-
+  // Escuchar la señal enviada desde NavBar (state.fetchAt) para forzar recarga incluso si ya estamos en /posts
+  useEffect(() => {
+    const fetchAt = (location.state as any)?.fetchAt as number | undefined;
+    if (fetchAt) {
+      fetchPosts();
+      // limpiar el state para evitar recargas infinitas
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.state]);
 
   return (
 
