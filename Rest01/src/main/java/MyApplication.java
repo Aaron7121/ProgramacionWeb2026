@@ -12,7 +12,7 @@ public class MyApplication extends Application {
 @Override
     public Set<Class<?>> getClasses() {
 
-    return Set.of(HolaRest.class,ChaoRest.class);
+    return Set.of(HolaRest.class,ChaoRest.class,CustomerRest.class);
 
 }
 }
