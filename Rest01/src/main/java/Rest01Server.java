@@ -4,9 +4,9 @@ import jakarta.ws.rs.core.Application;
 import java.net.URI;
 
 public class Rest01Server {
+    public static void main(String[] args) throws Exception {
 
 
-    static void main() throws InterruptedException {
 
 
         //este es el contenedor Bootstrap SE , ahora necesitamos El SERVIDOR HTTP
