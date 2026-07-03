@@ -9,6 +9,7 @@ import About from './paginas/About';
 import Post from './paginas/Post';
 import DetallesPost from './paginas/DetallesPost';
 import CommentsPost from './paginas/CommentsPost';
+import Users from './paginas/Users';
 
 const darkTheme= createTheme({
   palette: {
@@ -29,6 +30,8 @@ function App() {
         <Route path="/posts" element={<Post />} />
         <Route path="/posts/:id" element={<DetallesPost />} />
         <Route path="/posts/:id/comments" element={<CommentsPost />} />
+          <Route path="/users" element={<Users />} />
+
 
 
       </Routes>

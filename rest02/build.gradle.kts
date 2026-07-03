@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("io.freefair.lombok") version "9.5.0"
 }
 
 group = "org.example"
@@ -37,20 +38,20 @@ dependencies {
 
 
 }
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+
+tasks.withType<JavaCompile> {
+    options.release.set(21)
+}
+
+sourceSets {
+    main {
+        output.setResourcesDir(
+            file("${buildDir}/classes/java/main")
+        )
     }
 }
 
 tasks.test {
     useJUnitPlatform()
-}
-tasks.withType<JavaCompile> {
-    options.release.set(21)
-}
-sourceSets {
-    main {
-        output.setResourcesDir( file("${buildDir}/classes/java/main") )
-    }
+
 }

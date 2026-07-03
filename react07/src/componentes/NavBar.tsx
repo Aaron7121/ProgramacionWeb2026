@@ -42,7 +42,7 @@ function NavBar() {
         </Button>
         <Button
             color="inherit"
-            onClick={() => navigate('/posts', { state: { fetchAt: Date.now() } })}
+            onClick={() => navigate('/users', { state: { fetchAt: Date.now() } })}
             startIcon={< AccountCircleIcon  />}
         >
           Users
