@@ -16,7 +16,7 @@ function Users(){
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        axios.get<User[]>('https://jsonplaceholder.typicode.com/users')
+        axios.get<User[]>('http://localhost:8080/api/users')
             .then(response => setUser(response.data))
             .catch(error => alert("Error: " + error))
             .finally(() => setLoading(false));

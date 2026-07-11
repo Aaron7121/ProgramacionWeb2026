@@ -64,6 +64,17 @@ public class ClientRestMain {
                     put(Entity.entity(newuser,MediaType.APPLICATION_JSON));
 
 
+            //delete
+//            var responseDelete=client.target(USERS_URL+ "{id}")
+//                    .resolveTemplate("id", 1)
+//                    .request(MediaType.APPLICATION_JSON).
+//                    delete();
+//
+//
+//            responseDelete.getStatus();
+//            System.out.println( responseDelete.getStatus());
+
+
 
         }
     }

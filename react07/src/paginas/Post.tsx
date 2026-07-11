@@ -30,7 +30,7 @@ function Post() {
       setLoading(true);
 
       const response = await axios.get<Post[]>(
-        'https://jsonplaceholder.typicode.com/posts'
+        'http://localhost:8080/api/posts'
       );
 
       setPosts(response.data);

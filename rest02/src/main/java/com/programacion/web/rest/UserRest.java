@@ -14,6 +14,8 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class UserRest {
 
+
+
     final UserServiceImpl userServiceImpl;
 
     @Inject
@@ -22,17 +24,29 @@ public class UserRest {
     }
 
     @GET
-    public List<User> findAll() {
-        return userServiceImpl.findAll();
+    public Response findAll() {
+        List<User> users = userServiceImpl.findAll();
+        return Response.ok(users)
+                .header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+                .header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept, Authorization")
+                .build();
     }
 
     @GET
     @Path("/{id}")
     public Response findById(@PathParam("id") Integer id){
         return userServiceImpl.findById(id)
-                .map(Response::ok)
-                .orElse(Response.status(Response.Status.NOT_FOUND))
-                .build();
+                .map(user -> Response.ok(user)
+                        .header("Access-Control-Allow-Origin", "*")
+                        .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+                        .header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept, Authorization")
+                        .build())
+                .orElse(Response.status(Response.Status.NOT_FOUND)
+                        .header("Access-Control-Allow-Origin", "*")
+                        .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+                        .header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept, Authorization")
+                        .build());
 
     }
 

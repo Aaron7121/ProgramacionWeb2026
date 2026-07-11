@@ -26,7 +26,7 @@ function Posts(){
      */
 
     useEffect(() => {
-        axios.get<Post[]>('https://jsonplaceholder.typicode.com/posts')
+        axios.get<Post[]>('https://localhost:8080/api/posts')
             .then(response => setPosts(response.data))
             .catch(error => alert("Error: " + error))
             .finally(() => setLoading(false));
