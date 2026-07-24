@@ -21,6 +21,11 @@ public class AlbumRest {
         this.albumServiceImpl = albumServiceImpl;
     }
 
+    public AlbumRest( ){
+        albumServiceImpl = null;
+    }
+
+
     @GET
     public List<Album> findAll() {
         return albumServiceImpl.findAll();

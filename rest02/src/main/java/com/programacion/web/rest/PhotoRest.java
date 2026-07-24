@@ -20,6 +20,9 @@ public class PhotoRest {
     public PhotoRest(PhotoServiceImpl photoServiceImpl){
         this.photoServiceImpl = photoServiceImpl;
     }
+    public PhotoRest( ){
+        photoServiceImpl = null;
+    }
 
     @GET
     public List<Photo> findAll() {

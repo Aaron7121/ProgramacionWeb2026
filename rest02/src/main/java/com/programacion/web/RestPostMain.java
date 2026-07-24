@@ -1,11 +1,13 @@
 package com.programacion.web;
 
+import com.programacion.web.config.CORSFilter;
 import com.programacion.web.repositorios.UserRepository;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.enterprise.inject.spi.CDI;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Persistence;
 import jakarta.ws.rs.SeBootstrap;
+import jakarta.ws.rs.container.ContainerRequestContext;
 
 import java.net.URI;
 
@@ -39,6 +41,9 @@ public class RestPostMain {
 
         SeBootstrap.start(MyApplication.class, config).thenAccept(
                 instance -> {
+
+                    //var corsFilter = CDI.current().select(CORSFilter.class).get();
+                   // corsFilter.filter(config.sslContext().);
                     System.out.println(instance);
                     URI uri = instance.configuration().baseUri();
 

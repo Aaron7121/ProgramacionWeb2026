@@ -16,14 +16,11 @@ import org.apache.deltaspike.jpa.api.entitymanager.PersistenceUnitName;
 @ApplicationScoped
 public class JpaConfig {
 
-    @PersistenceUnit( unitName = "dbposts")
+    @PersistenceUnitName("dbposts")
     @Inject
     private EntityManagerFactory emf;
 
-    @PostConstruct
-    void init(){
-        emf = Persistence.createEntityManagerFactory("dbposts");
-    }
+
 
     @Produces
     @ApplicationScoped
@@ -35,6 +32,11 @@ public class JpaConfig {
     @ApplicationScoped
     public EntityManager entityManager(){
         return emf.createEntityManager();
+    }
+
+    @PostConstruct
+    void init(){
+        emf = Persistence.createEntityManagerFactory("dbposts");
     }
 
     void closeEntityManager(@Disposes EntityManager em){

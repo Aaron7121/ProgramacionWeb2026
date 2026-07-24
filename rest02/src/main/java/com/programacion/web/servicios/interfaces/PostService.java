@@ -9,7 +9,8 @@ public interface PostService {
 
     List<Post> findAll();
     Optional<Post> findById(Integer id);
-    Post save(Post post);
+    Post create(Post post); // Para crear nuevos Posts
+    Post save(Post post);   // Para actualizar Posts existentes
     void delete(Post post);
 
 }

@@ -24,6 +24,10 @@ public class TodoRest {
     public TodoRest(TodoServiceImpl todoServiceImpl) {
         this.todoServiceImpl = todoServiceImpl;
     }
+    public TodoRest( ) {
+        todoServiceImpl = null;
+    }
+
 
     @GET
     public List<Todo> findAll(){ return todoServiceImpl.findAll();}

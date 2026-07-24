@@ -3,6 +3,7 @@ package com.programacion.web.servicios.impl;
 import com.programacion.web.data.dto.User;
 import com.programacion.web.repositorios.UserRepository;
 import com.programacion.web.servicios.interfaces.UserService;
+
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
@@ -12,12 +13,13 @@ import java.util.Optional;
 @ApplicationScoped
 public class UserServiceImpl implements UserService {
 
-    final UserRepository userRepository;
+private final UserRepository userRepository;
 
-    @Inject
+@Inject
     public UserServiceImpl(UserRepository userRepository){
         this.userRepository = userRepository;
     }
+
 
 
     @Override

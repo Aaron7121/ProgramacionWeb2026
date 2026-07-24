@@ -20,6 +20,9 @@ public class CommentRest {
     public CommentRest(CommentServiceImpl commentServiceImpl){
         this.commentServiceImpl = commentServiceImpl;
     }
+    public CommentRest( ){
+        commentServiceImpl = null;
+    }
 
     @GET
     public List<Comment> findAll() {

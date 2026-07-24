@@ -10,7 +10,7 @@ repositories {
     mavenCentral()
 }
 
-val restEasyVersion = "7.0.2.Final"
+val restEasyVersion = "7.0.0.Final"
 val weldVersion = "6.0.4.Final"
 val hibernateVersion = "7.4.1.Final"
 val postgresqlVersion = "42.7.11"

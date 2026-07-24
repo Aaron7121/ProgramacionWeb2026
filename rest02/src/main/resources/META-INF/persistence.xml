@@ -8,11 +8,7 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <class>com.programacion.web.data.dto.User</class>
-        <class>com.programacion.web.data.dto.Todo</class>
-        <class>com.programacion.web.data.dto.Post</class>
-        <class>com.programacion.web.data.dto.Photo</class>
-        <class>com.programacion.web.data.dto.Comment</class>
-        <class>com.programacion.web.data.dto.Album</class>
+
 
 
         <properties>

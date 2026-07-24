@@ -7,6 +7,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
+import java.beans.ConstructorProperties;
 import java.util.List;
 
 @Path("/users")
@@ -15,38 +16,27 @@ import java.util.List;
 public class UserRest {
 
 
+   @Inject
+     UserServiceImpl userServiceImpl;
 
-    final UserServiceImpl userServiceImpl;
 
-    @Inject
-    public UserRest(UserServiceImpl userServiceImpl){
-        this.userServiceImpl = userServiceImpl;
+
+    public UserRest() {
     }
 
-    @GET
-    public Response findAll() {
-        List<User> users = userServiceImpl.findAll();
-        return Response.ok(users)
-                .header("Access-Control-Allow-Origin", "*")
-                .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
-                .header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept, Authorization")
-                .build();
-    }
 
     @GET
+    public List<User> findAll() {
+       return userServiceImpl.findAll();
+    }
+
+     @GET
     @Path("/{id}")
     public Response findById(@PathParam("id") Integer id){
         return userServiceImpl.findById(id)
-                .map(user -> Response.ok(user)
-                        .header("Access-Control-Allow-Origin", "*")
-                        .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
-                        .header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept, Authorization")
-                        .build())
-                .orElse(Response.status(Response.Status.NOT_FOUND)
-                        .header("Access-Control-Allow-Origin", "*")
-                        .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
-                        .header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept, Authorization")
-                        .build());
+                .map(Response::ok)
+                .orElse(Response.status(Response.Status.NOT_FOUND))
+                .build();
 
     }
 
